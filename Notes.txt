@@ -1,0 +1,58 @@
+Users Class
+    Patient: ID, userName, password, legalName, email, treatmentNotes
+
+    Staff: ID, userName, password, legalName, email, department
+
+    Each user should be derived from a super class.
+
+    Include a toString method in both classes.
+
+
+Driver Class
+    The driver class will call the Login class.
+
+    A Patient Manager object should be returned upon a successful login attempt.
+
+    The Driver class will then use the Patient Manager object to perform any
+    desired tasks.
+
+    The Driver class should handle user input.
+
+
+Login Class
+    Two files will be given. One containing Patient info (patient.csv) and one
+    containing Staff info (medicalstaff.csv).
+
+    The Login class will ask the user for their username and password.
+
+    The Login class will check each patient or staff member to determine if
+    BOTH the username and password match in either of the files.
+
+    If a match is found, a new user will be created, else an error will be
+    caught and handled.
+
+    Ideally there should be two separate logins for each type of user.
+    Upon a successful login attempt, the Login class should return a
+    Patient Manager object.
+
+Patient Manager Class
+    The class will be instantiated upon a successful login attempt.
+
+    The class will hold at least the user that is currently logged in and an
+    ArrayList of patients.
+
+    Regardless of user type, the user should be able to view and/or edit
+    their own personal info.
+
+    Only staff members should be able to access the info of other patients.
+
+    Patients should be sorted by ID and by name.
+
+    The class should have three methods. One to view the current user's info,
+    one to look up a patient, and one to edit the info of the current patient.
+
+    After modifying a patient's info, the patient info file should be rewritten
+    to contain the modified info.
+
+    The class should also print out all emails of patients sorted
+    alphabetically.
