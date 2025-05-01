@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,9 +70,51 @@ public class HospitalDatabase {
         throw new Exception("Invalid username and/or password.");
     }
 
-    public Patient[] getPatientsListByID() {
-        // TODO: Finish this method
-        return null;
+    public void getPatientsListByID() {
+        sortPatientsByID();
+        for(Patient patient : patients) {
+            System.out.println(patient);
+        }
+    }
+
+    // Helper method to sort the patients array by ID value
+    private void sortPatientsByID() {
+        Patient temp;
+        // Sort patients list by ID value using a bubble sort algorithm
+        for(int i = 0; i < patients.length - 1; i++) {
+            for(int j = 0; j < patients.length - 1; j++) {
+                // Compare the ID values of the two patients at index j and j + 1
+                if(patients[j].getID().compareToIgnoreCase(patients[j + 1].getID()) > 0) {
+                    temp = patients[j];
+                    patients[j] = patients[j + 1];
+                    patients[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public void getPatientsListByName() {
+        sortPatientsAlphabetically();
+        for(Patient patient : patients) {
+            System.out.println(patient);
+        }
+    }
+
+    // Helper method to sort the patients array alphabetically
+    private void sortPatientsAlphabetically() {
+        Patient temp;
+        // Sort patients list alphabetically by using a bubble sort algorithm
+        for(int i = 0; i < patients.length - 1; i++) {
+            for(int j = 0; j < patients.length - i - 1; j++) {
+                // Compare the names of the two patients at index j and index j + 1
+                if(patients[j].getLegalName().compareToIgnoreCase(patients[j + 1].getLegalName()) > 0) {
+                    // Swap the patients in the array
+                    temp = patients[j];
+                    patients[j] = patients[j + 1];
+                    patients[j + 1] = temp;
+                }
+            }
+        }
     }
 
     public Patient getPatientInfo(String idNumber) throws Exception {
@@ -103,13 +144,22 @@ public class HospitalDatabase {
         throw new Exception("Patient not found.");
     }
 
-    public void editPatientInfo(String idNumber, int indexValue, String changeValue) {
+    public void printPatientEmails() {
+        sortPatientsAlphabetically();
         for(Patient patient : patients) {
+            System.out.println(patient.getEmail());
+        }
+    }
+
+    public void editPatientInfo(String idNumber, int indexValue, String changeValue) {
+        // Search the database for the appropriate patient
+        for(Patient patient : patients) {
+            // Find the right patient based on ID
             if(idNumber.equals(patient.getID())) {
                 // TODO: Finish this if-statement
             }
         }
-        // TODO: Finish this switch statement
+        // FIXME: Finish this switch statement
         switch(indexValue) {
             case 0:
                 break;
@@ -120,6 +170,10 @@ public class HospitalDatabase {
             case 3:
                 break;
         }
+    }
+
+    public void editStaffInfo() {
+
     }
 
 }

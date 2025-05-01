@@ -4,7 +4,7 @@ public class PatientManager {
 
     public PatientManager(String userType, String[] loginInfo, HospitalDatabase database) {
         if(userType.equals("patient")) {
-
+            System.out.println(" ");
         }
     }
 }
