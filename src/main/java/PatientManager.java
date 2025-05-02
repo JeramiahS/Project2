@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class PatientManager {
     private GenericUser USER;
 
@@ -21,12 +23,12 @@ public class PatientManager {
         }
     }
 
-    public void getCurrentUserInfo() {
+    public String getCurrentUserInfo() {
         // Calls the current user's toString method
-        System.out.println(USER);
+        return USER.toString();
     }
 
-    public void getPatientsByID() throws Exception{
+    public Patient[] getPatientsByID() throws Exception{
         // Checks if the current user is a patient before trying to get the list of other patients
         if(USER instanceof Patient) {
             throw new Exception("You must be a staff member to perform this task.");
@@ -34,17 +36,75 @@ public class PatientManager {
         else {
             // Retrieve a copy of the patients array from the database
             Patient[] patientsList = HospitalDatabase.getPatientsList();
-            // TODO: Finish this method
+            // Sort the array by ID number using a bubble sort algorithm
+            for(int i = 0; i < patientsList.length - 1; i++) {
+                for(int j = 0; j < patientsList.length - i - 1; j++) {
+                    // Compare the ID number of the two patients at indexes j and j + 1
+                    if(patientsList[j].getID().compareTo(patientsList[j + 1].getID()) > 0) {
+                        // Temporary variable to hold the patient that is to be swapped
+                        Patient temp = patientsList[j];
+                        // Replace the patient at index [j] with the patient at index [j + 1]
+                        patientsList[j] = patientsList[j + 1];
+                        // Place the patient in the temporary variable back into the array at index [j + 1]
+                        patientsList[j + 1] = temp;
+                    }
+                }
+            }
+            // Return the patientsList array to the method caller
+            return patientsList;
         }
     }
 
-    public void getPatientsAlphabetically() throws Exception {
+    public Patient[] getPatientsAlphabetically() throws Exception {
         if(USER instanceof Patient) {
             throw new Exception("You must be a staff member to perform this task.");
         }
         else {
             Patient[] patientsList = HospitalDatabase.getPatientsList();
-            // TODO: Finish this method
+            // Sort the array by ID number using a bubble sort algorithm
+            for(int i = 0; i < patientsList.length - 1; i++) {
+                for(int j = 0; j < patientsList.length - i - 1; j++) {
+                    // Compare the names of the two patients at indexes j and j + 1
+                    if(patientsList[j].getLegalName().compareTo(patientsList[j + 1].getLegalName()) > 0) {
+                        // Temporary variable to hold the patient that is to be swapped
+                        Patient temp = patientsList[j];
+                        // Replace the patient at index [j] with the patient at index [j + 1]
+                        patientsList[j] = patientsList[j + 1];
+                        // Place the patient in the temporary variable back into the array at index [j + 1]
+                        patientsList[j + 1] = temp;
+                    }
+                }
+            }
+            // Return the patientsList array to the method caller
+            return patientsList;
+        }
+    }
+
+    public String[] getPatientEmails() throws Exception {
+        if(USER instanceof Patient) {
+            throw new Exception("You must be a staff member to perform this task.");
+        }
+        else {
+            // Get the patients array fom the database and sort it alphabetically using getPatientsAlphabetically()
+            Patient[] patientsList = getPatientsAlphabetically();
+            // Create an arrayList to store the patient emails
+            ArrayList<String> patientEmails = new ArrayList<>();
+            // For-loop to read the patientsList array
+            for(Patient patient : patientsList) {
+                // Add the patient's email to the ArrayList
+                patientEmails.add(patient.getEmail());
+            }
+            // Convert the arrayList into a String array and return it to the method caller
+            return patientEmails.toArray(new String[0]);
+        }
+    }
+
+    public void editCurrentUserInfo(String legalName) throws Exception {
+        if(USER instanceof Patient) {
+
+        }
+        else {
+
         }
     }
 

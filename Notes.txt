@@ -38,15 +38,15 @@ Login Class
 Patient Manager Class
     The class will be instantiated upon a successful login attempt.
 
-    The class will hold at least the user that is currently logged in and an
-    ArrayList of patients.
+    (Done) The class will hold at least the user that is currently logged in and an
+           ArrayList of patients.
 
-    Regardless of user type, the user should be able to view and/or edit
-    their own personal info.
+    (Done) Regardless of user type, the user should be able to view and/or edit
+           their own personal info.
 
-    Only staff members should be able to access the info of other patients.
+    (Done) Only staff members should be able to access the info of other patients.
 
-    Patients should be sorted by ID and by name.
+    (Done) Patients should be sorted by ID and by name.
 
     (Done) The class should have three methods. One to view the current user's info,
            one to look up a patient, and one to edit the info of the current patient.
@@ -54,5 +54,5 @@ Patient Manager Class
     After modifying a patient's info, the patient info file should be rewritten
     to contain the modified info.
 
-    The class should also print out all emails of patients sorted
-    alphabetically.
+    (Done) The class should also print out all emails of patients sorted
+           alphabetically.
