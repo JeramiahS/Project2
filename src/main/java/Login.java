@@ -2,7 +2,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Login {
-    private static final HospitalDatabase DATABASE = new HospitalDatabase();
 
     public void displayLoginPrompt() {
         Scanner scanner = new Scanner(System.in);
@@ -15,15 +14,15 @@ public class Login {
             if(input == 0) {
                 String[] loginInfo = getLoginInfo();
                 // Validate login info by querying the hospital's database
-                if(DATABASE.patientLoginIsValid(loginInfo)) {
+                if(HospitalDatabase.patientLoginIsValid(loginInfo)) {
                     System.out.println("Login successful.");
                     // If the login is valid, the patient should interact with PatientManager to view/edit their info
-                    new PatientManager("patient", loginInfo, DATABASE);
+
                 }
             }
             else if(input == 1) {
                 String[] loginInfo = getLoginInfo();
-                if(DATABASE.staffLoginIsValid(loginInfo)) {
+                if(HospitalDatabase.staffLoginIsValid(loginInfo)) {
                     System.out.println("Staff member login successful.");
                     // TODO: Apply staff privileges mechanics
                     System.out.println("Patient manager privileges applied.");
