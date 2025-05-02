@@ -7,7 +7,11 @@ public class HospitalDatabase {
     private static Patient[] patients;
     private static MedicalStaff[] staff;
 
-    public HospitalDatabase() {
+    private HospitalDatabase() throws Exception {
+        throw new Exception("This class is not to be instantiated.");
+    }
+
+    public static void initializePatientsArray() {
         // Take in the patients file and convert to an ArrayList containing all patient info
         try(BufferedReader br = new BufferedReader(new FileReader(FileHandler.getPatientsFile()))) {
             // Create an ArrayList of Strings to contain patient info
@@ -29,6 +33,9 @@ public class HospitalDatabase {
         catch(IOException ioException) {
             System.out.println("Patients file not found. Check file path and/or file name spelling.");
         }
+    }
+
+    public static void initializeStaffArray() {
         try(BufferedReader br = new BufferedReader(new FileReader(FileHandler.getStaffFile()))) {
             ArrayList<String> staffList = new ArrayList<>();
             String line = br.readLine();
@@ -100,30 +107,4 @@ public class HospitalDatabase {
         }
         throw new Exception("Patient not found.");
     }
-
-    public void editPatientInfo(String idNumber, int indexValue, String changeValue) {
-        // Search the database for the appropriate patient
-        for(Patient patient : patients) {
-            // Find the right patient based on ID
-            if(idNumber.equals(patient.getID())) {
-                // TODO: Finish this if-statement
-            }
-        }
-        // FIXME: Finish this switch statement
-        switch(indexValue) {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-        }
-    }
-
-    public void editStaffInfo() {
-        // TODO: Finish this method
-    }
-
 }

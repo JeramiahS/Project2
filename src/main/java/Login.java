@@ -13,6 +13,7 @@ public class Login {
         try {
             if(input == 0) {
                 String[] loginInfo = getLoginInfo();
+                System.out.println("Login info received.");
                 // Validate login info by querying the hospital's database
                 if(HospitalDatabase.patientLoginIsValid(loginInfo)) {
                     System.out.println("Login successful.");
@@ -43,17 +44,19 @@ public class Login {
         catch (Exception e) {
             // Redo the login entry if username and/or password is invalid
             System.out.println(e.getMessage());
-            getLoginInfo();
+            displayLoginPrompt();
         }
     }
 
     // Helper method prompts the user to enter their info and returns a String array containing said info
-    private static String[] getLoginInfo() {
+    private String[] getLoginInfo() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your username:");
         String username = scanner.next();
+        System.out.println("Username: " + username);
         System.out.println("Enter your password:");
         String password = scanner.next();
+        System.out.println("Password: " + password);
         return new String[]{username, password};
     }
 

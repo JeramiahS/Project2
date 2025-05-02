@@ -7,7 +7,6 @@ public class FileHandler {
     private FileHandler() throws Exception {
         throw new Exception("This class is not to be instantiated.");
     }
-
     public static File getPatientsFile() {
         return PATIENTS_FILE;
     }
