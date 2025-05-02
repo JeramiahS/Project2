@@ -108,20 +108,20 @@ public class HospitalDatabase {
         throw new Exception("Patient not found.");
     }
 
-    public static void setPatientPassword(String legalName, String newPassword) {
+    public static void setCurrentPatientPassword(Patient patientObject, String newPassword) {
         // Look through the patients array for a matching name
         for(Patient patient : patients) {
-            // Verify the patient's name
-            if(legalName.equalsIgnoreCase(patient.getLegalName())) {
+            // Verify the patient
+            if(patientObject == patient) {
                 // Change the patient's password to the new password
                 patient.setPassword(newPassword);
             }
         }
     }
 
-    public static void setPatientLegalName(String legalName, String newLegalName) {
+    public static void setCurrentPatientLegalName(Patient patientObject, String newLegalName) {
         for(Patient patient : patients) {
-            if(legalName.equalsIgnoreCase(patient.getLegalName())) {
+            if(patientObject == patient) {
                 patient.setLegalName(newLegalName);
             }
         }
@@ -143,17 +143,17 @@ public class HospitalDatabase {
         }
     }
 
-    public static void setStaffMemberPassword(String legalName, String newPassword) {
+    public static void setCurrentStaffMemberPassword(MedicalStaff staffObject, String newPassword) {
         for(MedicalStaff staffMember : staff) {
-            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+            if(staffObject == staffMember) {
                 staffMember.setPassword(newPassword);
             }
         }
     }
 
-    public static void setStaffMemberLegalName(String legalName, String newLegalName) {
+    public static void setCurrentStaffMemberLegalName(MedicalStaff staffObject, String newLegalName) {
         for(MedicalStaff staffMember : staff) {
-            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+            if(staffObject == staffMember) {
                 staffMember.setLegalName(newLegalName);
             }
         }

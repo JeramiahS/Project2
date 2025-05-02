@@ -103,10 +103,20 @@ public class PatientManager {
 
     public void changeMyPassword(String newPassword) {
         if(USER instanceof Patient) {
-            HospitalDatabase.setPatientPassword(USER.getLegalName(), newPassword);
+            HospitalDatabase.setCurrentPatientPassword((Patient) USER, newPassword);
         }
         else {
-            HospitalDatabase.setStaffMemberPassword(USER.getLegalName(), newPassword);
+            HospitalDatabase.setCurrentStaffMemberPassword((MedicalStaff) USER, newPassword);
         }
     }
+
+    public void changeMyLegalName(String newLegalName) {
+        if(USER instanceof Patient) {
+            HospitalDatabase.setCurrentPatientLegalName((Patient) USER, newLegalName);
+        }
+        else {
+            HospitalDatabase.setCurrentStaffMemberLegalName((MedicalStaff) USER, newLegalName);
+        }
+    }
+
 }
