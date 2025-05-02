@@ -7,9 +7,11 @@ public class PatientManager {
         // userType value serves as a flag to tell PatientManager if the user is a patient or staff member
         if(userType == 0) {
             try {
+                // Grab the correct patient based on the login info
                 USER = HospitalDatabase.getCurrentPatient(loginInfo);
             }
             catch (Exception e){
+                // Catch Exception if patient happens to not be in the database
                 System.out.println(e.getMessage());
             }
         }
@@ -99,13 +101,12 @@ public class PatientManager {
         }
     }
 
-    public void editCurrentUserInfo(String legalName) throws Exception {
+    public void changeMyPassword(String newPassword) {
         if(USER instanceof Patient) {
-
+            HospitalDatabase.setPatientPassword(USER.getLegalName(), newPassword);
         }
         else {
-
+            HospitalDatabase.setStaffMemberPassword(USER.getLegalName(), newPassword);
         }
     }
-
 }

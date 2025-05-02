@@ -107,4 +107,72 @@ public class HospitalDatabase {
         }
         throw new Exception("Patient not found.");
     }
+
+    public static void setPatientPassword(String legalName, String newPassword) {
+        // Look through the patients array for a matching name
+        for(Patient patient : patients) {
+            // Verify the patient's name
+            if(legalName.equalsIgnoreCase(patient.getLegalName())) {
+                // Change the patient's password to the new password
+                patient.setPassword(newPassword);
+            }
+        }
+    }
+
+    public static void setPatientLegalName(String legalName, String newLegalName) {
+        for(Patient patient : patients) {
+            if(legalName.equalsIgnoreCase(patient.getLegalName())) {
+                patient.setLegalName(newLegalName);
+            }
+        }
+    }
+
+    public static void setPatientEmail(String legalName, String newEmail) {
+        for(Patient patient : patients) {
+            if(legalName.equals(patient.getLegalName())) {
+                patient.setEmail(newEmail);
+            }
+        }
+    }
+
+    public static void setPatientTreatmentNotes(String legalName, String newTreatmentNotes) {
+        for(Patient patient : patients) {
+            if(legalName.equals(patient.getLegalName())) {
+                patient.setTreatmentNotes(newTreatmentNotes);
+            }
+        }
+    }
+
+    public static void setStaffMemberPassword(String legalName, String newPassword) {
+        for(MedicalStaff staffMember : staff) {
+            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+                staffMember.setPassword(newPassword);
+            }
+        }
+    }
+
+    public static void setStaffMemberLegalName(String legalName, String newLegalName) {
+        for(MedicalStaff staffMember : staff) {
+            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+                staffMember.setLegalName(newLegalName);
+            }
+        }
+    }
+
+    public static void setStaffMemberEmail(String legalName, String newEmail) {
+        for(MedicalStaff staffMember : staff) {
+            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+                staffMember.setEmail(newEmail);
+            }
+        }
+    }
+
+    public static void setStaffMemberDepartment(String legalName, String newDepartment) {
+        for(MedicalStaff staffMember : staff) {
+            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+                staffMember.setDepartment(newDepartment);
+            }
+        }
+    }
+
 }

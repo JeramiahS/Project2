@@ -1,5 +1,9 @@
 public abstract class GenericUser {
-    protected String id, userName, password, legalName, email;
+    protected String id;
+    protected String userName;
+    protected String password;
+    protected String legalName;
+    protected String email;
 
     protected String getID() {
         return this.id;
@@ -19,14 +23,6 @@ public abstract class GenericUser {
 
     protected String getEmail() {
         return this.email;
-    }
-
-    protected void setID(String id) {
-        this.id=id;
-    }
-
-    protected void setUserName(String userName) {
-        this.userName = userName;
     }
 
     protected void setPassword(String password) {
