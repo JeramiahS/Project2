@@ -22,8 +22,8 @@ public class MedicalStaff extends GenericUser {
 
     public String toFile() {
         // Returns the staff member's full information to be written to the file
-        return this.id + ", "  + this.userName  + ", " + this.password + ", " + this.legalName + ", " + this.email +
-                ", " + this.department;
+        return this.id + ","  + this.userName  + "," + this.password + "," + this.legalName + "," + this.email +
+                "," + this.department;
     }
 
 }

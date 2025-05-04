@@ -26,7 +26,7 @@ public class FileHandler {
             // For-loop to iterate through the entire array of Patient objects
            for(Patient patient : patientsArray) {
                // Calls the current Patient object's toFile method and writes that string to the file with a new line
-               bw.write(patient.toFile() + System.lineSeparator());
+               bw.write(patient.toFile() + "\n");
            }
         }
         catch(IOException ioException) {
@@ -37,7 +37,7 @@ public class FileHandler {
     public static void setStaffFile(MedicalStaff[] staffArray) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(STAFF_FILE))) {
             for(MedicalStaff staffMember : staffArray) {
-                bw.write(staffMember.toFile() + System.lineSeparator());
+                bw.write(staffMember.toFile() + "\n");
             }
         }
         catch(IOException ioException) {

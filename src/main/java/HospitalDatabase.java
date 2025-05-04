@@ -87,7 +87,7 @@ public class HospitalDatabase {
 
     public static Patient getPatient(String legalName) throws IllegalArgumentException {
         for(Patient patient : patients) {
-            if(legalName.equals(patient.getID())) {
+            if(legalName.equals(patient.getLegalName())) {
                 return patient;
             }
         }

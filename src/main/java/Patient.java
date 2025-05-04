@@ -22,8 +22,8 @@ public class Patient extends GenericUser {
 
     public String toFile() {
         // Returns the patient's full information to written to the file
-        return this.id + ", "  + this.userName  + ", " + this.password + ", " + this.legalName + ", " + this.email +
-                ", " + this.treatmentNotes;
+        return this.id + ","  + this.userName  + "," + this.password + "," + this.legalName + "," + this.email +
+                "," + this.treatmentNotes;
     }
 
 }

@@ -91,11 +91,14 @@ public class Driver {
                 // Log in as a staff member
                 String[] loginInfo = LOGIN.getLoginInfo();
                 if(LOGIN.validStaffLogin(loginInfo)) {
+                    System.out.println("Login successful");
                     // Pass the login info so the user can be initialized in the PatientManager object
                     PatientManager patientManager = LOGIN.getPatientManagerAsStaffMember(loginInfo);
                     // Enter a loop so the user can interact with PatientManager
                     patientManager.printStaffMemberDialogue();
                     int staffMenuOption = SCANNER.nextInt();
+                    // Flush the Scanner
+                    SCANNER.nextLine();
                     while(staffMenuOption != 9) {
                         switch(staffMenuOption) {
                             case 0:
@@ -165,6 +168,8 @@ public class Driver {
                         }
                         patientManager.printStaffMemberDialogue();
                         staffMenuOption = SCANNER.nextInt();
+                        // Flush the Scanner
+                        SCANNER.nextLine();
                     }
                     // Upon exiting the loop, the program calls FileHandler to save the changes to the
                     // medicalstaff file
