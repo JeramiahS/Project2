@@ -51,7 +51,7 @@ public class HospitalDatabase {
         }
     }
 
-    public static boolean patientLoginIsValid(String[] loginInfo) throws Exception {
+    public static boolean patientLoginIsValid(String[] loginInfo) throws IllegalArgumentException {
         // Loop to check each patient in the database
         for (Patient patient : patients) {
             // Check each patient for a matching username and password
@@ -61,10 +61,10 @@ public class HospitalDatabase {
             }
         }
         // Otherwise, if a match is not found, the method will throw an exception to indicate a failed login attempt
-        throw new Exception("Invalid username and/or password");
+        throw new IllegalArgumentException("Invalid username and/or password");
     }
 
-    public static boolean staffLoginIsValid(String[] loginInfo) throws Exception {
+    public static boolean staffLoginIsValid(String[] loginInfo) throws IllegalArgumentException {
         // Loop to check each staff member in the database
         for (MedicalStaff medicalStaff : staff) {
             // Check each staff member for a matching username and password
@@ -74,38 +74,38 @@ public class HospitalDatabase {
             }
         }
         // Otherwise, if a match is not found, the method will return false
-        throw new Exception("Invalid username and/or password.");
+        throw new IllegalArgumentException("Invalid username and/or password.");
     }
 
     public static Patient[] getPatientsList() {
         return patients;
     }
 
-    public static Patient getPatient(String legalName) throws Exception {
+    public static Patient getPatient(String legalName) throws IllegalArgumentException {
         for(Patient patient : patients) {
             if(legalName.equals(patient.getID())) {
                 return patient;
             }
         }
-        throw new Exception("Patient not found.");
+        throw new IllegalArgumentException("Patient not found.");
     }
 
-    public static Patient getCurrentPatient(String[] loginInfo) throws Exception {
+    public static Patient getCurrentPatient(String[] loginInfo) throws IllegalArgumentException {
         for(Patient patient : patients) {
             if(patient.getPassword().equals(loginInfo[0]) && patient.getID().equals(loginInfo[1])) {
                 return patient;
             }
         }
-        throw new Exception("Patient not found.");
+        throw new IllegalArgumentException("Patient not found.");
     }
 
-    public static MedicalStaff getCurrentStaffMember(String[] loginInfo) throws Exception {
+    public static MedicalStaff getCurrentStaffMember(String[] loginInfo) throws IllegalArgumentException {
         for(MedicalStaff staffMember : staff) {
             if(staffMember.getPassword().equals(loginInfo[0]) && staffMember.getID().equals(loginInfo[1])) {
                 return staffMember;
             }
         }
-        throw new Exception("Staff member not found.");
+        throw new IllegalArgumentException("Staff member not found.");
     }
 
     public static void setCurrentPatientPassword(Patient patientObject, String newPassword) {

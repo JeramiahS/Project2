@@ -10,23 +10,42 @@ public class Login {
         System.out.println("1. Log in as a staff member");
     }
 
-    public int getUserInput() {
+    public int getUserInput() throws IllegalArgumentException {
        return SCANNER.nextInt();
     }
 
-    public void logInAsPatient() {
-        String[] loginInfo = getLoginInfo();
-    }
-
-    public void logInAsStaffMember() {
-        String[] loginInfo = getLoginInfo();
-    }
-
-    private String[] getLoginInfo() {
+    public String[] getLoginInfo() {
         System.out.println("Enter your username:");
         String username = SCANNER.next();
         System.out.println("Enter your password:");
         String password = SCANNER.next();
         return new String[] {username, password};
     }
+
+    public boolean validPatientLogin(String[] loginInfo) throws IllegalArgumentException {
+        if(!HospitalDatabase.patientLoginIsValid(loginInfo)) {
+            throw new IllegalArgumentException("Invalid username and/or password");
+        }
+        else {
+            return true;
+        }
+    }
+
+    public boolean validStaffLogin(String[] loginInfo) throws IllegalArgumentException {
+        if(!HospitalDatabase.staffLoginIsValid(loginInfo)) {
+            throw new IllegalArgumentException("Invalid username and/or password.");
+        }
+        else {
+            return true;
+        }
+    }
+
+    public PatientManager getPatientManagerAsPatient(String[] loginInfo) {
+        return new PatientManager(0, loginInfo);
+    }
+
+    public PatientManager getPatientManagerAsStaffMember(String[] loginInfo) {
+        return new PatientManager(1, loginInfo);
+    }
+
 }

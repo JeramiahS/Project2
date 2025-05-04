@@ -1,8 +1,7 @@
 public class MedicalStaff extends GenericUser {
     private String department;
 
-    public MedicalStaff(String id, String userName, String password,
-                        String legalName, String email, String department) {
+    public MedicalStaff(String id, String userName, String password, String legalName, String email, String department) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -21,6 +20,12 @@ public class MedicalStaff extends GenericUser {
 
     @Override
     public String toString() {
+        // TODO: Finish this method. Do not include the username and password in this method
+        return null;
+    }
+
+    public String toFile() {
+        // TODO: Finish this method. Include the username and password in this method
         return null;
     }
 

@@ -30,10 +30,10 @@ public class PatientManager {
         return USER.toString();
     }
 
-    public Patient[] getPatientsByID() throws Exception{
+    public Patient[] getPatientsByID() throws IllegalArgumentException {
         // Checks if the current user is a patient before trying to get the list of other patients
         if(USER instanceof Patient) {
-            throw new Exception("You must be a staff member to perform this task.");
+            throw new IllegalArgumentException("You must be a staff member to perform this task.");
         }
         else {
             // Retrieve a copy of the patients array from the database
@@ -57,13 +57,13 @@ public class PatientManager {
         }
     }
 
-    public Patient[] getPatientsAlphabetically() throws Exception {
+    public Patient[] getPatientsAlphabetically() throws IllegalArgumentException {
         if(USER instanceof Patient) {
-            throw new Exception("You must be a staff member to perform this task.");
+            throw new IllegalArgumentException("You must be a staff member to perform this task.");
         }
         else {
             Patient[] patientsList = HospitalDatabase.getPatientsList();
-            // Sort the array by ID number using a bubble sort algorithm
+            // Sort the array alphabetically by first name using a bubble sort algorithm
             for(int i = 0; i < patientsList.length - 1; i++) {
                 for(int j = 0; j < patientsList.length - i - 1; j++) {
                     // Compare the names of the two patients at indexes j and j + 1
@@ -82,9 +82,9 @@ public class PatientManager {
         }
     }
 
-    public String[] getPatientEmails() throws Exception {
+    public String[] getPatientEmails() throws IllegalArgumentException {
         if(USER instanceof Patient) {
-            throw new Exception("You must be a staff member to perform this task.");
+            throw new IllegalArgumentException("You must be a staff member to perform this task.");
         }
         else {
             // Get the patients array fom the database and sort it alphabetically using getPatientsAlphabetically()
@@ -129,27 +129,27 @@ public class PatientManager {
     }
 
 
-    public void changeMyTreatmentNotes(String newTreatmentNotes) throws Exception {
+    public void changeMyTreatmentNotes(String newTreatmentNotes) throws IllegalArgumentException {
         if(USER instanceof MedicalStaff) {
-            throw new Exception("You must be a patient to edit your treatment notes.");
+            throw new IllegalArgumentException("You must be a patient to edit your treatment notes.");
         }
         else {
             HospitalDatabase.setCurrentPatientTreatmentNotes((Patient) USER, newTreatmentNotes);
         }
     }
 
-    public void changeMyDepartment(String newDepartment) throws Exception{
+    public void changeMyDepartment(String newDepartment) throws IllegalArgumentException{
         if(USER instanceof Patient) {
-            throw new Exception("You must be a staff member to change your department.");
+            throw new IllegalArgumentException("You must be a staff member to change your department.");
         }
         else {
             HospitalDatabase.setCurrentStaffMemberDepartment((MedicalStaff) USER, newDepartment);
         }
     }
 
-    public String lookupPatient(String patientName) throws Exception {
+    public String lookupPatient(String patientName) throws IllegalArgumentException {
         if(USER instanceof Patient) {
-            throw new Exception("You must be a staff member to look up a patient.");
+            throw new IllegalArgumentException("You must be a staff member to look up a patient.");
         }
         else {
             return HospitalDatabase.getPatient(patientName).toString();

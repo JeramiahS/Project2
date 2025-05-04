@@ -25,9 +25,8 @@ public class FileHandler {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(PATIENTS_FILE))) {
             // For-loop to iterate through the entire array of Patient objects
            for(Patient patient : patientsArray) {
-               // FIXME: Ensure that the toString method includes the patient's username and password
-               // Calls the current Patient object's toString method and writes that string to the file w/ a new line
-               bw.write(patient.toString() + "\n");
+               // Calls the current Patient object's toFile method and writes that string to the file w/ a new line
+               bw.write(patient.toFile() + "\n");
            }
         }
         catch(IOException ioException) {
@@ -38,8 +37,7 @@ public class FileHandler {
     public static void setStaffFile(MedicalStaff[] staffArray) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(STAFF_FILE))) {
             for(MedicalStaff staffMember : staffArray) {
-                // FIXME: Ensure that the toString method includes the staff member's username and password
-                bw.write(staffMember.toString());
+                bw.write(staffMember.toFile());
             }
         }
         catch(IOException ioException) {
