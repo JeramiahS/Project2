@@ -81,7 +81,7 @@ public class HospitalDatabase {
         return patients;
     }
 
-    public Patient getPatientInfo(String legalName) throws Exception {
+    public static Patient getPatient(String legalName) throws Exception {
         for(Patient patient : patients) {
             if(legalName.equals(patient.getID())) {
                 return patient;
@@ -105,7 +105,7 @@ public class HospitalDatabase {
                 return staffMember;
             }
         }
-        throw new Exception("Patient not found.");
+        throw new Exception("Staff member not found.");
     }
 
     public static void setCurrentPatientPassword(Patient patientObject, String newPassword) {
@@ -127,17 +127,17 @@ public class HospitalDatabase {
         }
     }
 
-    public static void setPatientEmail(String legalName, String newEmail) {
+    public static void setCurrentPatientEmail(Patient patientObject, String newEmail) {
         for(Patient patient : patients) {
-            if(legalName.equals(patient.getLegalName())) {
+            if(patientObject == patient) {
                 patient.setEmail(newEmail);
             }
         }
     }
 
-    public static void setPatientTreatmentNotes(String legalName, String newTreatmentNotes) {
+    public static void setCurrentPatientTreatmentNotes(Patient patientObject, String newTreatmentNotes) {
         for(Patient patient : patients) {
-            if(legalName.equals(patient.getLegalName())) {
+            if(patientObject == patient) {
                 patient.setTreatmentNotes(newTreatmentNotes);
             }
         }
@@ -159,17 +159,17 @@ public class HospitalDatabase {
         }
     }
 
-    public static void setStaffMemberEmail(String legalName, String newEmail) {
+    public static void setCurrentStaffMemberEmail(MedicalStaff staffObject, String newEmail) {
         for(MedicalStaff staffMember : staff) {
-            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+            if(staffObject == staffMember) {
                 staffMember.setEmail(newEmail);
             }
         }
     }
 
-    public static void setStaffMemberDepartment(String legalName, String newDepartment) {
+    public static void setCurrentStaffMemberDepartment(MedicalStaff staffObject, String newDepartment) {
         for(MedicalStaff staffMember : staff) {
-            if(legalName.equalsIgnoreCase(staffMember.getLegalName())) {
+            if(staffObject == staffMember) {
                 staffMember.setDepartment(newDepartment);
             }
         }

@@ -119,4 +119,41 @@ public class PatientManager {
         }
     }
 
+    public void changeMyEmail(String newEmail) {
+        if(USER instanceof Patient) {
+            HospitalDatabase.setCurrentPatientEmail((Patient) USER, newEmail);
+        }
+        else {
+            HospitalDatabase.setCurrentStaffMemberEmail((MedicalStaff) USER, newEmail);
+        }
+    }
+
+
+    public void changeMyTreatmentNotes(String newTreatmentNotes) throws Exception {
+        if(USER instanceof MedicalStaff) {
+            throw new Exception("You must be a patient to edit your treatment notes.");
+        }
+        else {
+            HospitalDatabase.setCurrentPatientTreatmentNotes((Patient) USER, newTreatmentNotes);
+        }
+    }
+
+    public void changeMyDepartment(String newDepartment) throws Exception{
+        if(USER instanceof Patient) {
+            throw new Exception("You must be a staff member to change your department.");
+        }
+        else {
+            HospitalDatabase.setCurrentStaffMemberDepartment((MedicalStaff) USER, newDepartment);
+        }
+    }
+
+    public String lookupPatient(String patientName) throws Exception {
+        if(USER instanceof Patient) {
+            throw new Exception("You must be a staff member to look up a patient.");
+        }
+        else {
+            return HospitalDatabase.getPatient(patientName).toString();
+        }
+    }
+
 }
