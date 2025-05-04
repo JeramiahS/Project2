@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Login {
@@ -8,10 +7,6 @@ public class Login {
         System.out.println("Enter a number to continue:");
         System.out.println("0. Log in as a patient");
         System.out.println("1. Log in as a staff member");
-    }
-
-    public int getUserInput() throws IllegalArgumentException {
-       return SCANNER.nextInt();
     }
 
     public String[] getLoginInfo() {
@@ -41,10 +36,12 @@ public class Login {
     }
 
     public PatientManager getPatientManagerAsPatient(String[] loginInfo) {
+        // userType == 0 indicates to PatientManager that the user is a patient at the hospital
         return new PatientManager(0, loginInfo);
     }
 
     public PatientManager getPatientManagerAsStaffMember(String[] loginInfo) {
+        // userType == 1 indicates to PatientManager that the user is a staff member at the hospital
         return new PatientManager(1, loginInfo);
     }
 

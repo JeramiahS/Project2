@@ -25,6 +25,29 @@ public class PatientManager {
         }
     }
 
+    public void printPatientMenuDialogue() {
+        System.out.println("Enter a number to continue.");
+        System.out.println("0. Get my info");
+        System.out.println("1. Change my password");
+        System.out.println("2. Change my name");
+        System.out.println("3. Change my email");
+        System.out.println("4. Edit my notes");
+        System.out.println("9. Exit the program");
+    }
+
+    public void printStaffMemberDialogue() {
+        System.out.println("Enter a number to continue.");
+        System.out.println("0. Get my info");
+        System.out.println("1. Change my password");
+        System.out.println("2. Change my name");
+        System.out.println("3. Change my email");
+        System.out.println("4. Change my department");
+        System.out.println("5. Look up a patient");
+        System.out.println("6. Get list of patients alphabetically");
+        System.out.println("7. Get list of patients by ID value");
+        System.out.println("8. Get list of patient emails");
+    }
+
     public String getCurrentUserInfo() {
         // Calls the current user's toString method
         return USER.toString();
@@ -37,7 +60,7 @@ public class PatientManager {
         }
         else {
             // Retrieve a copy of the patients array from the database
-            Patient[] patientsList = HospitalDatabase.getPatientsList();
+            Patient[] patientsList = HospitalDatabase.getPatientsArray();
             // Sort the array by ID number using a bubble sort algorithm
             for(int i = 0; i < patientsList.length - 1; i++) {
                 for(int j = 0; j < patientsList.length - i - 1; j++) {
@@ -57,12 +80,12 @@ public class PatientManager {
         }
     }
 
-    public Patient[] getPatientsAlphabetically() throws IllegalArgumentException {
+    public Patient[] getPatientsArrayAlphabetically() throws IllegalArgumentException {
         if(USER instanceof Patient) {
             throw new IllegalArgumentException("You must be a staff member to perform this task.");
         }
         else {
-            Patient[] patientsList = HospitalDatabase.getPatientsList();
+            Patient[] patientsList = HospitalDatabase.getPatientsArray();
             // Sort the array alphabetically by first name using a bubble sort algorithm
             for(int i = 0; i < patientsList.length - 1; i++) {
                 for(int j = 0; j < patientsList.length - i - 1; j++) {
@@ -82,13 +105,13 @@ public class PatientManager {
         }
     }
 
-    public String[] getPatientEmails() throws IllegalArgumentException {
+    public String[] getPatientEmailsArray() throws IllegalArgumentException {
         if(USER instanceof Patient) {
             throw new IllegalArgumentException("You must be a staff member to perform this task.");
         }
         else {
-            // Get the patients array fom the database and sort it alphabetically using getPatientsAlphabetically()
-            Patient[] patientsList = getPatientsAlphabetically();
+            // Get the patients array fom the database and sort it alphabetically using getPatientsArrayAlphabetically()
+            Patient[] patientsList = getPatientsArrayAlphabetically();
             // Create an arrayList to store the patient emails
             ArrayList<String> patientEmails = new ArrayList<>();
             // For-loop to read the patientsList array
@@ -147,7 +170,7 @@ public class PatientManager {
         }
     }
 
-    public String lookupPatient(String patientName) throws IllegalArgumentException {
+    public String getPatient(String patientName) throws IllegalArgumentException {
         if(USER instanceof Patient) {
             throw new IllegalArgumentException("You must be a staff member to look up a patient.");
         }

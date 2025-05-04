@@ -77,8 +77,12 @@ public class HospitalDatabase {
         throw new IllegalArgumentException("Invalid username and/or password.");
     }
 
-    public static Patient[] getPatientsList() {
+    public static Patient[] getPatientsArray() {
         return patients;
+    }
+
+    public static MedicalStaff[] getStaffArray() {
+        return staff;
     }
 
     public static Patient getPatient(String legalName) throws IllegalArgumentException {
@@ -92,7 +96,7 @@ public class HospitalDatabase {
 
     public static Patient getCurrentPatient(String[] loginInfo) throws IllegalArgumentException {
         for(Patient patient : patients) {
-            if(patient.getPassword().equals(loginInfo[0]) && patient.getID().equals(loginInfo[1])) {
+            if(patient.getUserName().equals(loginInfo[0]) && patient.getPassword().equals(loginInfo[1])) {
                 return patient;
             }
         }
@@ -101,7 +105,7 @@ public class HospitalDatabase {
 
     public static MedicalStaff getCurrentStaffMember(String[] loginInfo) throws IllegalArgumentException {
         for(MedicalStaff staffMember : staff) {
-            if(staffMember.getPassword().equals(loginInfo[0]) && staffMember.getID().equals(loginInfo[1])) {
+            if(staffMember.getUserName().equals(loginInfo[0]) && staffMember.getPassword().equals(loginInfo[1])) {
                 return staffMember;
             }
         }

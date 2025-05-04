@@ -10,23 +10,20 @@ public class Patient extends GenericUser {
         this.treatmentNotes = treatmentNotes;
     }
 
-    public String getTreatmentNotes() {
-        return this.treatmentNotes;
-    }
-
     public void setTreatmentNotes(String treatmentNotes) {
         this.treatmentNotes = treatmentNotes;
     }
 
     @Override
     public String toString() {
-        // TODO: Finish this method. Do not include the username and password in this method
-        return null;
+        // Returns the patient's general information
+        return this.id + ", " + this.legalName + ", " + this.email + ", " + this.treatmentNotes;
     }
 
     public String toFile() {
-        // TODO: Finish this method. Include the username and password in this method
-        return null;
+        // Returns the patient's full information to written to the file
+        return this.id + ", "  + this.userName  + ", " + this.password + ", " + this.legalName + ", " + this.email +
+                ", " + this.treatmentNotes;
     }
 
 }

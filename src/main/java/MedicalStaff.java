@@ -10,23 +10,20 @@ public class MedicalStaff extends GenericUser {
         this.department = department;
     }
 
-    public String getDepartment() {
-        return this.department;
-    }
-
     public void setDepartment(String department) {
         this.department = department;
     }
 
     @Override
     public String toString() {
-        // TODO: Finish this method. Do not include the username and password in this method
-        return null;
+        // Returns the staff member's general information
+        return this.id + ", " + this.legalName + ", " + this.email + ", " + this.department;
     }
 
     public String toFile() {
-        // TODO: Finish this method. Include the username and password in this method
-        return null;
+        // Returns the staff member's full information to be written to the file
+        return this.id + ", "  + this.userName  + ", " + this.password + ", " + this.legalName + ", " + this.email +
+                ", " + this.department;
     }
 
 }
