@@ -139,7 +139,7 @@ public class Driver {
                                 System.out.println("Your new department has been saved successfully.");
                                 break;
                             case 5:
-                                System.out.println("Enter the patient's name:");
+                                System.out.println("Enter the patient's name (case sensitive):");
                                 String patientName = SCANNER.nextLine();
                                 System.out.println(patientManager.getPatient(patientName));
                                 break;

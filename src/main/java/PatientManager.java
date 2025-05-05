@@ -46,6 +46,7 @@ public class PatientManager {
         System.out.println("6. Get list of patients alphabetically");
         System.out.println("7. Get list of patients by ID value");
         System.out.println("8. Get list of patient emails");
+        System.out.println("9. Exit the program");
     }
 
     public String getCurrentUserInfo() {
